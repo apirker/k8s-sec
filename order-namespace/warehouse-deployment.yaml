@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: warehouse-app
+  name: warehouse-deployment
+  namespace: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: warehouse-app
+  template:
+    metadata:
+      labels:
+        app: warehouse-app
+    spec:
+      containers:
+      - name: warehouseapp
+        image: warehouseapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8083
+          name: http-web-svc

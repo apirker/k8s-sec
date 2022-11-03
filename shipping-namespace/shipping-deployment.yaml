@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: shipping-app
+  name: shipping-deployment
+  namespace: shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shipping-app
+  template:
+    metadata:
+      labels:
+        app: shipping-app
+    spec:
+      containers:
+      - name: shippingapp
+        image: shippingapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8084
+          name: http-web-svc

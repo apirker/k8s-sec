@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: billing-configmap
+  namespace: billing
+data:
+  appsettings.json: |
+    {
+      "user": "admin",
+      "pw": "test"
+    }

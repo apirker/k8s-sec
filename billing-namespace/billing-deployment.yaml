@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: billing-app
+  name: billing-deployment
+  namespace: billing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: billing-app
+  template:
+    metadata:
+      labels:
+        app: billing-app
+    spec:
+      containers:
+      - name: billingapp
+        image: billingapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+          name: http-web-svc

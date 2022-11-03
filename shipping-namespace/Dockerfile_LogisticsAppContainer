@@ -1,0 +1,4 @@
+FROM node:6.14.2
+EXPOSE 8085
+COPY server_logistics.js .
+CMD node server_logistics.js

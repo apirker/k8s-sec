@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: warehouse-app
+  name: warehouse-service
+  namespace: order
+spec:
+  ports:
+  - port: 8083
+    protocol: TCP
+    targetPort: 8083
+  selector:
+    app: warehouse-app
+  type: LoadBalancer

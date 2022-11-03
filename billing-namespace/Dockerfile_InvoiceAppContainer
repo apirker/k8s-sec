@@ -1,0 +1,4 @@
+FROM node:6.14.2
+EXPOSE 8081
+COPY server_invoice.js .
+CMD node server_invoice.js

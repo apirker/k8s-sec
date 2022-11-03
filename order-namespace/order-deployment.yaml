@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: order-app
+  name: order-deployment
+  namespace: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-app
+  template:
+    metadata:
+      labels:
+        app: order-app
+    spec:
+      containers:
+      - name: orderapp
+        image: orderapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8082
+          name: http-web-svc
