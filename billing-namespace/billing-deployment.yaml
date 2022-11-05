@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: billing-app
+    ns: billingns
   name: billing-deployment
   namespace: billing
 spec:
@@ -15,6 +16,16 @@ spec:
       labels:
         app: billing-app
     spec:
+      dnsPolicy: Default 
+      enableServiceLinks: false
+      hostNetwork: false  
+      hostPID: false
+      hostIPC: false        
+      automountServiceAccountToken: false
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000         
       containers:
       - name: billingapp
         image: billingapp:latest
@@ -22,3 +33,7 @@ spec:
         ports:
         - containerPort: 8080
           name: http-web-svc
+        securityContext:
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true

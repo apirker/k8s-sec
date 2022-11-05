@@ -12,4 +12,4 @@ spec:
     targetPort: 8081
   selector:
     app: invoice-app
-  type: LoadBalancer
+  type: ClusterIP

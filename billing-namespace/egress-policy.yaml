@@ -4,11 +4,13 @@ metadata:
   name: egress
   namespace: billing
 spec:
-  podSelector: {}
+  podSelector:
+    matchLabels:
+      app: billing-app
   policyTypes:
   - Egress
   egress:
   - to:
-    ports:
-    - protocol: TCP
-      port: 443
+    - podSelector:
+        matchLabels:
+          app: order-app

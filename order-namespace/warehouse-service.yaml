@@ -12,4 +12,4 @@ spec:
     targetPort: 8083
   selector:
     app: warehouse-app
-  type: LoadBalancer
+  type: ClusterIP
